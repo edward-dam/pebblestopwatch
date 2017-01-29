@@ -7,6 +7,7 @@
 ###screenshots
 
 ![basalt.png](/assets/basalt.png)
+![basalt-stopwatch.png](/assets/basalt-stopwatch.png)
 
 ###banner
 
