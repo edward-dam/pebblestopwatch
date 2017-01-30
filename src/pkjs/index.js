@@ -73,7 +73,7 @@ mainWind.on('click', 'down', function(e) {
   downText.position(position(-5));
   downHead.font(fontMedium);
   downText.font(fontSmall);
-  downHead.text('Stopwatch v1.0');
+  downHead.text('Stopwatch v1.1');
   downText.text('by Edward Dam');
   downWind.add(downHead);
   downWind.add(downText);
@@ -134,7 +134,7 @@ mainWind.on('click', 'select', function(e) {
 
   // reset stopwatch
   stopwatchWind.on('longClick', 'select', function() {
-    Vibe.vibrate('short');
+    Vibe.vibrate('long');
     stopwatchText.text('00:00');
     stopwatchWind.add(stopwatchText);
     stopwatchWind.add(stopwatchInfo);
