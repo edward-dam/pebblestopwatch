@@ -13,7 +13,7 @@ var UI       = require('pebblejs/ui');
 var Vector2  = require('pebblejs/lib/vector2');
 //var ajax   = require('pebblejs/lib/ajax');
 var Settings = require('pebblejs/settings');
-//var Vibe     = require('pebblejs/ui/vibe');
+var Vibe     = require('pebblejs/ui/vibe');
 
 // definitions
 var window = new UI.Window();
@@ -81,6 +81,69 @@ mainWind.on('click', 'down', function(e) {
 });
 
 // select button
-//mainWind.on('click', 'select', function(e) {
+mainWind.on('click', 'select', function(e) {
+  
+   // display screen
+  var stopwatchWind = new UI.Window();
+  var stopwatchHead = new UI.Text({size: size, backgroundColor: backgroundColor, textAlign: textAlign});
+  var stopwatchText = new UI.Text({size: size, textAlign: textAlign,
+    color: highlightTextColor, backgroundColor: highlightBackgroundColor
+  });
+  var stopwatchInfo = new UI.TimeText({size: size, backgroundColor: backgroundColor, textAlign: textAlign});
+  stopwatchHead.position(position(-70));
+  stopwatchText.position(position(-28));
+  stopwatchInfo.position(position(+33));
+  stopwatchHead.font(fontMedium);
+  stopwatchText.font(fontXLarge);
+  stopwatchInfo.font(fontXSmall);
+  stopwatchHead.text('Stopwatch');
+  stopwatchText.text('00:00');
+  stopwatchInfo.text('\nLocal Time: %H:%M');
+  stopwatchWind.add(stopwatchHead);
+  stopwatchWind.add(stopwatchText);
+  stopwatchWind.add(stopwatchInfo);
+  stopwatchWind.show();
+  mainWind.hide();
 
-//});
+  var countup;
+  var timer = 0;
+  var resume = true;
+
+  // start, pause, resume stopwatch  
+  stopwatchWind.on('click', 'select', function() {
+    
+    if ( resume === true ) {
+      var  minutes, seconds;
+      Vibe.vibrate('short');
+      countup = setInterval(function () {
+        timer++;
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        //console.log(minutes + ":" + seconds);
+        stopwatchText.text(minutes + ":" + seconds);
+        stopwatchWind.add(stopwatchText);
+        stopwatchWind.add(stopwatchInfo);
+      }, 1000);      
+      resume = false;
+    } else {
+      Vibe.vibrate('short');
+      clearInterval(countup);
+      resume = true;
+    }
+  
+  });
+
+  // reset stopwatch
+  stopwatchWind.on('longClick', 'select', function() {
+    Vibe.vibrate('short');
+    stopwatchText.text('00:00');
+    stopwatchWind.add(stopwatchText);
+    stopwatchWind.add(stopwatchInfo);
+    clearInterval(countup);
+    timer = 0;
+    resume = true;
+  });
+  
+});
