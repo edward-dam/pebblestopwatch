@@ -111,10 +111,9 @@ mainWind.on('click', 'select', function(e) {
 
   // start, pause, resume stopwatch  
   stopwatchWind.on('click', 'select', function() {
-    
+    Vibe.vibrate('short');
     if ( resume === true ) {
       var  minutes, seconds;
-      Vibe.vibrate('short');
       countup = setInterval(function () {
         timer++;
         minutes = parseInt(timer / 60, 10);
@@ -128,11 +127,9 @@ mainWind.on('click', 'select', function(e) {
       }, 1000);      
       resume = false;
     } else {
-      Vibe.vibrate('short');
       clearInterval(countup);
       resume = true;
     }
-  
   });
 
   // reset stopwatch
