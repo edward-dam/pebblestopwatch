@@ -5,12 +5,12 @@
         "pebblejs": "^1.0.0"
     },
     "keywords": [],
-    "name": "stopwatch-v1.0",
+    "name": "stopwatch-v1.1",
     "pebble": {
         "capabilities": [
             "configurable"
         ],
-        "displayName": "Stopwatch v1.0",
+        "displayName": "Stopwatch v1.1",
         "enableMultiJS": true,
         "messageKeys": [
             "message_keys"

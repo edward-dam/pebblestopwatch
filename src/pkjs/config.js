@@ -3,7 +3,7 @@
 module.exports = [
   {
     "type": "heading",
-    "defaultValue": "Stopwatch v1.0"
+    "defaultValue": "Stopwatch v1.1"
   },
   {
     "type": "text",
