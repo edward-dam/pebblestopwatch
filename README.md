@@ -20,6 +20,8 @@ https://apps.getpebble.com/applications/588e2cfa95ce5b0e80000386
 ### description
 <br />
 
-Simple and easy to use stopwatch clock.
+Simple and easy to use stopwatch clock.<br />
+<br />
+
 - Press select to start, pause and resume.
 - Hold select to reset the clock.
